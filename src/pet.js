@@ -24,16 +24,19 @@ function Pet(name,age) {
         }
     }  
     Pet.prototype.checkUp = function() {
-        if((pet.fitness <= 3) && (pet.hunger >= 5)) {
+        if((this.fitness <= 3) && (this.hunger >= 5)) {
             return 'I am hungry AND I need a walk'}
-        if(!(pet.fitness <= 3) && !(pet.hunger >= 5)) {
+        if(!(this.fitness <= 3) && !(this.hunger >= 5)) {
             return 'I feel great!' }
-        if(pet.fitness <= 3) {
+        if(this.fitness <= 3) {
             return 'I need a walk'}
-        if(pet.hunger >= 5) {
+        if(this.hunger >= 5) {
             return 'I am hungry'}
     }
-    
-}
+} 
+
 
 module.exports = Pet;
+
+
+

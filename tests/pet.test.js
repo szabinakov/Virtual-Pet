@@ -46,25 +46,33 @@ describe('feed', () => {
     expect(pet.hunger).toEqual(0);
   });
 });
-describe('checkUp', () => {
-  it('Tells you how it feels', () => {
-    const pet = new Pet('Fido');
-    
-    pet.checkUp();
-    expect().toBe('I need a walk');
-    pet.hunger = 5;
-    pet.checkUp();
-    expect().toBe('I am hungry');
 
+
+describe('checkUp', () => {
+  it('Tells you if it is hungry', () => {
+    const pet = new Pet('Fido');
+    pet.hunger = 6;
+    pet.checkUp();
+    expect(pet.checkUp()).toBe('I am hungry');
+  });
+  it('Tells you if it needs to walk', () => {
+    const pet = new Pet('Fido'); 
+    pet.fitness = 2;
+    pet.checkUp();
+    expect(pet.checkUp()).toBe('I need a walk');
+  });
+  it('Tells you it needs walking and feeding', () => {
+    const pet = new Pet('Fido'); 
+    pet.fitness = 1;
+    pet.hunger = 7;
+    pet.checkUp();
+    expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
+  });
+  it('Tells you if he feels great', () => {
+    const pet = new Pet('Fido'); 
+    pet.fitness = 5;
+    pet.hunger = 2
+    pet.checkUp();
+    expect(pet.checkUp()).toBe('I feel great!');
   });
 });
-
-/*if the pet's fitness is 3 or less, it should return 'I need a walk'.
-
-if the pet's hunger is 5 or more, it should return 'I am hungry'.
-
-if both of the above are true, it should return 'I am hungry AND I need a walk'
-
-if neither of the above are true, it should return 'I feel great!'
-
-*/
